@@ -1,6 +1,5 @@
-#include<stdio.h>
-#include<stdlib.h>
-#define SIZE 4
+#include<stdio.h>                                          //header file to take inputs from the user
+#define SIZE 4                                             //initilizing size of stack to 4  
 int top=-1,stack[SIZE];
 void push();
 void pop();
@@ -13,21 +12,21 @@ void main()
               printf("\n\n**MENU**\n");
               printf("\n1.Push\n2.POP\n3.DISPLAY\n4.EXIT\n");
               scanf("%d",&choice);
-              switch(choice)
+              switch(choice)                             //user choses what operation to be performed
               {
                      case 1:
                      printf("Enter the value to be inserted:\n");
                      scanf("%d",&value);
-                     push(value);
+                     push(value);                        //to pusah the element to the stack
                      break;
                      case 2: 
-                     pop();
+                     pop();                              //to pop out the element from the stack
                      break;
                      case 3:
-                     display();
+                     display();                          //to display the elements
                      break;
-                     case 4:
-                     exit(0);
+                     case 4: 
+                     exit(0);        
                      default: printf("\nWrong Selection\n");
               }
        }
@@ -39,7 +38,7 @@ void push(int value)
        else
        {
               top++;
-              stack[top]=value;
+              stack[top]=value;                           //to initilize the value to stack
               printf("\nInsertion success");
        }
 }
@@ -50,7 +49,7 @@ void pop()
        else
        {
              printf("\nDeleted: %d",stack[top]);
-             top--;
+             top--;                                      //to pop the element     
        }
 }
 void display()
@@ -61,7 +60,7 @@ void display()
        {
             int i;
             printf("\nStack elements are: \n");
-            for(i=top;i>=0;i--)
+            for(i=top;i>=0;i--)                            //to display the element
             printf("%d\n",stack[i]);
        }
 }
