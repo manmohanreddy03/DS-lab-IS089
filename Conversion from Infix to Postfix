@@ -1,0 +1,61 @@
+#include<stdio.h>          //header file to take input from the user
+#include<ctype.h>          //header file to use isdigit function
+int stack[20];             //initilizing stack to 20
+int top=-1;                
+void push(int x)       
+{
+      stack[++top]=x;      //to push the operand into the stack
+}      
+int pop()
+{
+      return stack[top--];      //to pop the expression
+}
+int main()
+{  
+      char exp[20];
+      char *e;                 //to store the expression
+      int n1,n2,n3,num;
+      printf("Enter the expression: ");
+      scanf("%s",exp);         //taking input from the user
+      e=exp;  
+      while(*e!='\0')   
+      {
+             if(isdigit(*e))          //function to check for a digit in the expresion
+             {     
+                    num=*e-48;        
+                    push(num);        //to push the digit into the stack
+             }        
+             else
+             {
+                    n1=pop();         
+                    n2=pop();
+                    switch(*e)
+                    {     
+                            case'+':
+                            {
+                                     n3=n1+n2;      //to perform addition operation
+                                     break;
+                            }         
+                            case'-':
+                            {
+                                     n3=n2-n1;      //to perform subtraction operation
+                                     break;
+                            }
+                            case'*':
+                            {      
+                                     n3=n2*n1;      //to perform multiplication operation  
+                                     break;
+                            }                  
+                            case'/':
+                            {
+                                     n3=n2/n1;      //to perform division operation
+                                     break;
+                            }
+                    }                 
+                    push(n3);                       //poping the expression out of the stack
+             }              
+             e++;                                   //increment the pointer to the next digit or operation  
+      }
+      printf("Then result of the expression %s = %d\n",exp,pop());
+      return 0;
+}          
