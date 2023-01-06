@@ -1,0 +1,19 @@
+#include<stdio.h>
+int fact(int);                                                     //Function prototype
+void main()
+{
+       int n,f;
+       printf("Enter the value of n \n");
+       scanf("%d",&n);                                          //input taken from the user
+       f=fact(n);                                                      //Function call 
+       printf("Factorial of n=%d\n",f);
+}
+int fact(int n)                                                //user defined function to calculate factorial of a number
+{ 
+       if(n==1)
+       return 1;
+       if(n==0)
+       return 1;
+       else
+       return(n*fact(n-1));        //implementation of recursion i.e, calling the same function within itself
+}
